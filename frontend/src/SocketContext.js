@@ -29,7 +29,7 @@ const ContextProvider = ({children}) => {
         });
 
         socket.on('me', (id)=> {
-            setImmediate(id);
+            setMe(id);
         });
 
         socket.on('calluser', ({from , name: callerName, signal}) => {
@@ -105,7 +105,8 @@ const ContextProvider = ({children}) => {
                 setMe,
                 answerCall,
                 callUser,
-                leaveCall
+                leaveCall,
+                callEnded
             }}
         >
             {children}
