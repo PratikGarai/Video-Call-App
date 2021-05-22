@@ -8,14 +8,14 @@ const Notifications = () => {
 
   return (
     <React.Fragment>
-      {call.isReceivingCall && !callAccepted && (
+      {call.isReceivedCall && !callAccepted && (
         <div 
             style={{ 
                 display: 'flex', 
                 justifyContent: 'space-around' 
             }}
         >
-          <h1>{call.name} is calling:</h1>
+          <h1>{call.name || "Unknown"} is calling:</h1>
           
           <Button 
             variant="contained" 

@@ -28,7 +28,6 @@ const Videoplayer = () => {
     const { myVideo,
             userVideo,
             stream, 
-            name,
             callAccepted,
             callEnded,
             call,
@@ -50,7 +49,7 @@ const Videoplayer = () => {
                             variant="h5"
                             gutterBottom
                         >
-                            {name || 'You'}
+                            You
                         </Typography>
                         <video
                             playsInline
@@ -76,7 +75,7 @@ const Videoplayer = () => {
                             variant="h5"
                             gutterBottom
                         >
-                            {call.name || 'Caller'}
+                            {call.name || 'Unknown'}
                         </Typography>
                         <video
                             playsInline

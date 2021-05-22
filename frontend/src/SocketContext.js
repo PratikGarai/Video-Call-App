@@ -32,11 +32,11 @@ const ContextProvider = ({children}) => {
             setMe(id);
         });
 
-        socket.on('calluser', ({from , name: callerName, signal}) => {
+        socket.on('calluser', ({from , name, signal}) => {
             setCall({
                 isReceivedCall : true, 
                 from, 
-                name : callerName, 
+                name,
                 signal
             })
         })
@@ -55,7 +55,7 @@ const ContextProvider = ({children}) => {
         })
 
         peer.on('stream', (currentStream) => {
-            userVideo.curren.srcObject = currentStream;
+            userVideo.current.srcObject = currentStream;
         });
 
         peer.signal(call.signal);
@@ -74,13 +74,17 @@ const ContextProvider = ({children}) => {
         })
 
         peer.on('stream', (currentStream) => {
-            userVideo.curren.srcObject = currentStream;
+            userVideo.current.srcObject = currentStream;
         });
 
         socket.on('callaccepted', (signal) => {
             setCallAccepted(true);
             peer.signal(signal);
         });
+
+        socket.on('callended', () => {
+            leaveCall();
+        })
 
         connectionRef.current = peer;
     }
